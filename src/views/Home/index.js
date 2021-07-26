@@ -84,8 +84,6 @@ const Home = () => {
     setTypeCard("");
     setMaxLengthCVV(3);
     setMaxLengthCard(16);
-    setStatus(null);
-    setMessage(null);
   };
 
   const postNewCreditCard = async () => {
@@ -101,6 +99,7 @@ const Home = () => {
     } catch (error) {
       return {
         error: true,
+        message: "Error",
       };
     }
   };
@@ -110,12 +109,24 @@ const Home = () => {
     if (isValidated === true) {
       const response = await postNewCreditCard();
       const { statusCode, message, error } = response;
+
       if (error === false) {
         setStatus(statusCode);
         setMessage(message);
-        setIsVisiblePopup(true);
+      } else if (error === true) {
+        setStatus(statusCode);
+        setMessage(message);
       }
+      setIsVisiblePopup(true);
       clearState();
+    }
+  };
+
+  const changeVisibilityPopup = (visible) => {
+    setIsVisiblePopup(visible);
+    if (visible === false) {
+      setStatus(null);
+      setMessage(null);
     }
   };
 
@@ -124,7 +135,7 @@ const Home = () => {
       <div className="home-container">
         <Popup
           isVisible={isVisiblePopup}
-          setIsVisible={setIsVisiblePopup}
+          setIsVisible={changeVisibilityPopup}
           status={status}
           message={message}
         />

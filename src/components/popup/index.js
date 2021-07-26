@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { isEmpty, isNil } from "lodash";
 const Popup = (props) => {
   const { isVisible, setIsVisible, status, message } = props;
 
@@ -15,8 +16,10 @@ const Popup = (props) => {
         &times;
       </span>
       <div className="popup-content">
-        <p>Estatus: {status}</p>
-        <p>Message: {message}</p>
+        {isNil(status) === false && <p>Estatus: {status}</p>}
+        {isNil(message) === false && isEmpty(message) === false && (
+          <p>Message: {message}</p>
+        )}
       </div>
     </div>
   );
