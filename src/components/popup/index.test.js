@@ -1,11 +1,11 @@
 import React from "react";
 import "@testing-library/jest-dom/extend-expect";
-import { fireEvent, render } from "@testing-library/react";
+import { fireEvent, render, waitFor } from "@testing-library/react";
 import Popup from ".";
 
 describe("<Popup/>", () => {
-  const isVisible = true;
-  const mockHandler = jest.fn(); // espia de llamado a la funcion
+  let isVisible = true;
+  const mockHandler = jest.fn();
   const status = 200;
   const message = "success";
   let component;
@@ -21,17 +21,11 @@ describe("<Popup/>", () => {
     );
   });
 
-  test("Is showed and is not showed", () => {
+  test("Is showed", () => {
     const element = component.getByText("Response service");
     expect(element.parentNode).toHaveStyle("visibility: visible");
-  });
-
-  test("after clicking not showed", () => {
     const button = component.getByText("x");
     fireEvent.click(button);
-    setTimeout(() => {
-      expect(button.parentNode).toHaveStyle("visibility: hidden");
-      expect(mockHandler).toHaveBeenCalledTimes(1);
-    }, 1500);
+    expect(mockHandler).toHaveBeenCalledTimes(1);
   });
 });

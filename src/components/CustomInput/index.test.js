@@ -9,7 +9,6 @@ describe("<CustomInput/>", () => {
   const label = "Card number";
   const mockOnChange = jest.fn();
   const mockSetErrorField = jest.fn();
-
   const maxLength = 3;
 
   test("Validated Input", () => {
@@ -31,7 +30,7 @@ describe("<CustomInput/>", () => {
     expect(component.getByText("*")).toBeDefined();
   });
 
-  test("Input error", () => {
+  test("Input error", async () => {
     let component = render(
       <CustomInput
         label={label}
@@ -46,12 +45,9 @@ describe("<CustomInput/>", () => {
     );
 
     let input = component.getByDisplayValue("");
-
-    expect(component.getByText(label)).toBeDefined();
     expect(component.getByText("Required")).toBeDefined();
-
-    waitFor(() =>
-      expect(input).toHaveStyle("border: 1px solid #ef3b42 !important")
+    expect(input.parentNode).toHaveStyle(
+      "border: 1px solid #ef3b42 !important"
     );
     act(() => {
       input.value = "2";
@@ -59,9 +55,5 @@ describe("<CustomInput/>", () => {
       expect(mockOnChange).toHaveBeenCalledTimes(1);
       expect(mockSetErrorField).toHaveBeenCalledTimes(1);
     });
-
-    waitFor(() => expect(input).toHaveStyle("border: 1px solid #e4e4e4;"));
-
-    waitFor(() => expect(component.getAllByText("Required").length).toEqual(0));
   });
 });

@@ -31,7 +31,7 @@ const CustomInput = (props) => {
 
   return (
     <div className={`element ${className}`}>
-      <label className="label">
+      <label htmlFor={name} className="label">
         {label} {isRequired && <span>*</span>}
       </label>
       <input

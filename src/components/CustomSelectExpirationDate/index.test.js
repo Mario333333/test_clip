@@ -44,17 +44,16 @@ describe("<CustomExpirationDate/>", () => {
     expect(component.getByText(label)).toBeDefined();
     expect(component.getByText("Required")).toBeDefined();
 
-    waitFor(() =>
-      expect(select).toHaveStyle("border: 1px solid #ef3b42 !important")
+    expect(select.parentNode).toHaveStyle(
+      "border: 1px solid #ef3b42 !important"
     );
+
     act(() => {
       select.value = "2021";
       Simulate.change(select);
       expect(mockOnChange).toHaveBeenCalledTimes(1);
       expect(mockSetErrorField).toHaveBeenCalledTimes(1);
     });
-    waitFor(() => expect(select).toHaveStyle("border: 1px solid #e4e4e4;"));
-    waitFor(() => expect(component.getAllByText("Required").length).toEqual(0));
   });
 
   test("Error month", () => {
@@ -74,17 +73,15 @@ describe("<CustomExpirationDate/>", () => {
 
     expect(component.getByText(label)).toBeDefined();
     expect(component.getByText("Required")).toBeDefined();
-
-    waitFor(() =>
-      expect(select).toHaveStyle("border: 1px solid #ef3b42 !important")
+    expect(select.parentNode).toHaveStyle(
+      "border: 1px solid #ef3b42 !important"
     );
+
     act(() => {
       select.value = "12";
       Simulate.change(select);
       expect(mockOnChange).toHaveBeenCalledTimes(1);
       expect(mockSetErrorField).toHaveBeenCalledTimes(1);
     });
-    waitFor(() => expect(select).toHaveStyle("border: 1px solid #e4e4e4;"));
-    waitFor(() => expect(component.getAllByText("Required").length).toEqual(0));
   });
 });
