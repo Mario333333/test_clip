@@ -13,6 +13,7 @@ const CustomInput = (props) => {
     maxLength,
     errorField,
     setErrorField,
+    name,
   } = props;
 
   const handleChange = (event) => {
@@ -37,6 +38,7 @@ const CustomInput = (props) => {
         className={`custom-input ${
           isEmpty(errorField) === false ? "error_form" : ""
         }`}
+        name={name}
         value={value}
         onChange={handleChange}
         type={type ? type : "text"}

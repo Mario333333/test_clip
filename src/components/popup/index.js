@@ -6,14 +6,14 @@ const Popup = (props) => {
 
   return (
     <div className={`popup ${isVisible ? "active" : ""}`}>
-      <h4>Response Service</h4>
+      <h4>Response service</h4>
       <span
         id="close"
         onClick={() => {
           setIsVisible(!isVisible);
         }}
       >
-        &times;
+        x
       </span>
       <div className="popup-content">
         {isNil(status) === false && <p>Estatus: {status}</p>}

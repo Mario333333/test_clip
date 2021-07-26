@@ -15,6 +15,8 @@ const CustomSelectExpirationDate = (props) => {
     setErrorFieldYear,
     errorFieldMonth,
     setErrorFieldMonth,
+    nameYear,
+    nameMonth,
   } = props;
   const [optionsMonth, setOptionsMonth] = useState([]);
   const [optionsYear, setOptionsYear] = useState([]);
@@ -77,6 +79,8 @@ const CustomSelectExpirationDate = (props) => {
                 isEmpty(errorFieldMonth) === false ? "error_form" : ""
               }`}
               onChange={handleChangeMonth}
+              name={nameMonth}
+              data-testid="month"
             >
               <option value={""}>Month</option>
 
@@ -102,6 +106,8 @@ const CustomSelectExpirationDate = (props) => {
                 isEmpty(errorFieldYear) === false ? "error_form" : ""
               }`}
               onChange={handleChangeYear}
+              name={nameYear}
+              data-testid="year"
             >
               <option value={""}>Year</option>
               {optionsYear.map((item, index) => {

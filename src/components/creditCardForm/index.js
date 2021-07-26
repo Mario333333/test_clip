@@ -29,9 +29,10 @@ const CreditCardForm = ({
   setErrorCvv,
 }) => {
   return (
-    <form className="credit-card-form">
+    <form className="credit-card-form" data-testid="form">
       <CustomInput
         label="Card Number"
+        name="card-number"
         type="number"
         maxLength={maxLengthCard}
         value={cardNumber}
@@ -41,6 +42,7 @@ const CreditCardForm = ({
       />
       <CustomInput
         label="Card Name"
+        name="card-name"
         type="text"
         value={cardHolderName}
         onChange={setCardHolderName}
@@ -58,10 +60,13 @@ const CreditCardForm = ({
         setErrorFieldYear={setErrorExpirationYear}
         errorFieldMonth={errorExpirationMonth}
         setErrorFieldMonth={setErrorExpirationMonth}
+        nameYear="year"
+        nameMonth="month"
       />
       <CustomInput
         label="CVV"
         type="number"
+        name="cvv"
         className="custom-bassis-cvv"
         maxLength={maxLengthCVV}
         value={cvv}
@@ -75,6 +80,7 @@ const CreditCardForm = ({
           event.preventDefault();
           addNewCreditCard();
         }}
+        name="submit-button"
       >
         Submit
       </button>
