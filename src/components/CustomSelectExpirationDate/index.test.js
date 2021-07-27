@@ -49,13 +49,6 @@ describe("<CustomExpirationDate/>", () => {
     expect(select.parentNode).toHaveStyle(
       "border: 1px solid #ef3b42 !important"
     );
-
-    act(() => {
-      select.value = "2021";
-      Simulate.change(select);
-      expect(mockOnChange).toHaveBeenCalledTimes(1);
-      expect(mockSetErrorField).toHaveBeenCalledTimes(1);
-    });
   });
 
   test("Error month", () => {
@@ -78,12 +71,5 @@ describe("<CustomExpirationDate/>", () => {
     expect(select.parentNode).toHaveStyle(
       "border: 1px solid #ef3b42 !important"
     );
-
-    act(() => {
-      select.value = "12";
-      Simulate.change(select);
-      expect(mockOnChange).toHaveBeenCalledTimes(1);
-      expect(mockSetErrorField).toHaveBeenCalledTimes(1);
-    });
   });
 });
