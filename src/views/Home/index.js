@@ -6,7 +6,7 @@ import CreditCard from "../../components/creditCard";
 import Popup from "../../components/popup";
 
 import { postCreditCard } from "../../utils/services/api";
-var creditCardType = require("credit-card-type");
+const creditCardType = require("credit-card-type");
 
 const Home = () => {
   const [cardNumber, setCardNumber] = useState("");

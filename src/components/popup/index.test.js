@@ -1,9 +1,10 @@
 import React from "react";
 import "@testing-library/jest-dom/extend-expect";
-import { fireEvent, render, waitFor } from "@testing-library/react";
+import { fireEvent, render, cleanup } from "@testing-library/react";
 import Popup from ".";
 
 describe("<Popup/>", () => {
+  afterEach(cleanup);
   let isVisible = true;
   const mockHandler = jest.fn();
   const status = 200;

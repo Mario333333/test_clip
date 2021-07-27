@@ -1,11 +1,13 @@
 /* eslint-disable testing-library/await-async-utils */
 import React from "react";
 import "@testing-library/jest-dom/extend-expect";
-import { act, render, waitFor } from "@testing-library/react";
+import { act, render, cleanup } from "@testing-library/react";
 import CustomExpirationDate from ".";
 import { Simulate } from "react-dom/test-utils";
 
 describe("<CustomExpirationDate/>", () => {
+  afterEach(cleanup);
+
   const label = "Date";
   const mockOnChange = jest.fn();
   const mockSetErrorField = jest.fn();

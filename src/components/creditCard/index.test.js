@@ -1,9 +1,10 @@
 import React from "react";
 import "@testing-library/jest-dom/extend-expect";
-import { render } from "@testing-library/react";
+import { cleanup, render } from "@testing-library/react";
 import CreditCard from ".";
 
 describe("<CreditCard/>", () => {
+  afterEach(cleanup);
   const typeCard = "Visa";
   const cardNumber = "5234123456781234";
   const cardHolderName = "Test User";

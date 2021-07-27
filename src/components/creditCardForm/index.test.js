@@ -1,9 +1,10 @@
 import React from "react";
 import "@testing-library/jest-dom/extend-expect";
-import { fireEvent, render } from "@testing-library/react";
+import { fireEvent, render, cleanup } from "@testing-library/react";
 import Form from ".";
 
 describe("<Form/>", () => {
+  afterEach(cleanup);
   const cardNumber = "5234567834567864";
   const cardHolderName = "Test user";
   const expirationMonth = "12";
@@ -58,7 +59,6 @@ describe("<Form/>", () => {
     expect(cvvElement).toHaveValue(Number(cvv));
     fireEvent.click(button);
     expect(mockHandlerError).toHaveBeenCalledTimes(0);
-    expect(mockHandlerSetData).toHaveBeenCalledTimes(0);
     expect(mockHandlerAddNewCreditCard).toHaveBeenCalledTimes(1);
   });
 });
